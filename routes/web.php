@@ -29,3 +29,6 @@ Route::get('classes', function () {
 Route::get('contact', function () {
     return view('contact');
 })->name('contact') ;
+Route::get('teachers', function () {
+    return view('teachers');
+})->name('teachers') ;

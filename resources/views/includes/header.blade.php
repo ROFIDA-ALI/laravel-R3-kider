@@ -17,9 +17,9 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav mx-auto">
-            <a href="{{route('index')}}" class="nav-item nav-link active">Home</a>
-            <a href="{{route('about')}}" class="nav-item nav-link">About Us</a>
-            <a href="{{route('classes')}}" class="nav-item nav-link">Classes</a>
+            <a href="{{route('index')}}" class="nav-item nav-link {{ request()->is('index') ? 'active' : '' }}">Home</a>
+            <a href="{{route('about')}}" class="nav-item nav-link {{ request()->is('about') ? 'active' : '' }}">About Us</a>
+            <a href="{{route('classes')}}" class="nav-item nav-link {{ request()->is('classes') ? 'active' : '' }}">Classes</a>
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                 <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0">
@@ -31,7 +31,7 @@
                     <a href="404.html" class="dropdown-item">404 Error</a>
                 </div>
             </div>
-            <a href="{{route('contact')}}" class="nav-item nav-link">Contact Us</a>
+            <a href="{{route('contact')}}" class="nav-item nav-link {{ request()->is('contact') ? 'active' : '' }}">Contact Us</a>
         </div>
         <a href="" class="btn btn-primary rounded-pill px-3 d-none d-lg-block">Join Us<i class="fa fa-arrow-right ms-3"></i></a>
     </div>
