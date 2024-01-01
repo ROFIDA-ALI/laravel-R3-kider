@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\TestimonialsController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\HomeController ;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,3 +33,19 @@ Route::get('contact', function () {
 Route::get('teachers', function () {
     return view('teachers');
 })->name('teachers') ;
+
+Auth::routes(['verify'=>true]);
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::group(['prefix'=>'admin'],function(){
+// Route::prefix('admin')->group(function () {
+    Route::get('/addTestimonials', [TestimonialsController::class, 'create'])->name('addTestimonials');
+   
+
+Route::post('/testimonialStore', [TestimonialsController::class, 'store'])->name('testimonial');
+// })->middleware('verified');
+Route::get('/testimonial', [TestimonialsController::class, 'index']);
+});
+

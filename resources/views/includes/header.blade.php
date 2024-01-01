@@ -27,7 +27,7 @@
                     <a href="team.html" class="dropdown-item">Popular Teachers</a>
                     <a href="call-to-action.html" class="dropdown-item">Become A Teachers</a>
                     <a href="appointment.html" class="dropdown-item">Make Appointment</a>
-                    <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                    <a href="{{route('testimonial')}}" class="dropdown-item">Testimonial</a>
                     <a href="404.html" class="dropdown-item">404 Error</a>
                 </div>
             </div>
