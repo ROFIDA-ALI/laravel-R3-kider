@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Testimonial;
 use App\Traits\Common;
 use Illuminate\Http\RedirectResponse;
+use App\Mail\TestimonialMail;
+use Mail;
 class TestimonialsController extends Controller
 {
     use Common;
@@ -42,13 +44,19 @@ class TestimonialsController extends Controller
 
             $fileName = $this->uploadFile( $request->image, 'assets/img');
             $data['image']=$fileName;}
-        
+            Mail::to('rofidaali44@gmail.com')->send(new TestimonialMail($request));
          Testimonial::create($data);
          return redirect('admin/testimonial');
      }
     /**
      * Display the specified resource.
      */
+
+    //  public function testimonial_mail(Request $request) //send
+    // {
+    //    Mail::to('rofidaali44@gmail.com')->send(new TestimonialMail($request));
+    //    return "Your message is sent Successfully";
+    // }
     public function show(string $id)
     {
         //

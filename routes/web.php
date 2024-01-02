@@ -40,12 +40,15 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 Route::group(['prefix'=>'admin'],function(){
-// Route::prefix('admin')->group(function () {
     Route::get('/addTestimonials', [TestimonialsController::class, 'create'])->name('addTestimonials');
    
 
 Route::post('/testimonialStore', [TestimonialsController::class, 'store'])->name('testimonial');
-// })->middleware('verified');
-Route::get('/testimonial', [TestimonialsController::class, 'index']);
+Route::get('/testimonial', [TestimonialsController::class, 'index'])
+->middleware('verified');
+
+// Route::post('testimonial_mail', [TestimonialsController::class,'testimonial_mail'])->name('testimonial_mail');
+
 });
+
 
