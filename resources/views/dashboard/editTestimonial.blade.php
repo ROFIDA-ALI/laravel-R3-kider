@@ -184,42 +184,32 @@
             <!-- Blank Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="row vh-100 bg-secondary rounded align-items-center justify-content-center mx-0">
-                    <div class="col-12">
+                    <div class="col-sm-12 col-xl-6">
                         <div class="bg-secondary rounded h-100 p-4">
-                            <h6 class="mb-4">Testimonial table</h6>
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Testimonial Name</th>
-                                            <th scope="col">profession</th>
-                                            <th scope="col">Review</th>
-                                            <th scope="col">Date</th>
-                                            <th scope="col">Edit</th>
-                                           
-                                            <th scope="col">Delete</th>
-                                            <th scope="col">Show</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($testimonials as $testimonial)
-                                        <tr>
-                                            <th scope="row">{{$testimonial->id}}</th>
-                                            <td>{{$testimonial->testimonialName}}</td>
-                                            <td>{{$testimonial->subject}}</td>
-                                            <td>{{$testimonial->review}}</td>
-                                            <td>{{$testimonial->created_at}}</td>
-                                            <td><a href="editTestimonial/{{$testimonial->id}}">Edit</a></td>
-                                            <td><a href="deleteTestimonial/{{$testimonial->id}}">Delete</a></td>
-                                            <td><a href="TestimonialDetails/{{$testimonial->id }}">Show</a></td>
-                                        </tr>                                      
-                                            @endforeach
-                                    </tbody>
-
-                                </table>
+                            <h6 class="mb-4">Edit Testimonila</h6>
+                            <div class="form-floating mb-3">
+                               
+      <input type="text" class="form-control" id="testimonialName" placeholder=" testimonial Name" name="testimonialName" value="">
+      <label for="title">Name:</label>
                             </div>
-                        </div>
+                            <div class="form-floating mb-3">
+                                <input type="profession" class="form-control" id="floatingPassword"
+                                    placeholder="profession">
+                                <label for="floatingPassword">profession</label>
+                            </div>
+                           
+                            <div class="form-group">
+                                <label for="image">Image:</label>
+                                <input type="file" class="form-control" id="image" name="image" value="">
+                              
+                                    
+                            </div>  
+                            <div class="form-floating">
+                                <textarea class="form-control" placeholder="Leave a Review here"
+                                    id="floatingTextarea" style="height: 150px;"></textarea>
+                                <label for="floatingTextarea">Review</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Update</button>                        </div>
                     </div>
                 </div>
             </div>

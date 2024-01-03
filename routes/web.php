@@ -52,6 +52,6 @@ Route::get('/testimonial', [TestimonialsController::class, 'index'])
 });
 
 
-Route::get('testimonialAdmin', function () {
-    return view('dashboard/testimonialAdmin');
-}) ;
+
+Route::get('testimonialAdmin', [TestimonialsController::class, 'DashboradView']);
+Route::get('editTestimonial/{id}', [TestimonialsController::class, 'edit']);

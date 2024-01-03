@@ -59,16 +59,23 @@ class TestimonialsController extends Controller
     // }
     public function show(string $id)
     {
-        //
+        
+        
     }
-
+    public function DashboradView()
+    {
+        
+        $testimonials = Testimonial:: get(); 
+        return view('dashboard/testimonialAdmin', compact ('testimonials')); 
+    }
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
     {
-        //
-    }
+        
+        $testimonial = Testimonial::findOrFail($id);
+        return view('dashboard/editTestimonial', compact ('testimonial'));     }
 
     /**
      * Update the specified resource in storage.
