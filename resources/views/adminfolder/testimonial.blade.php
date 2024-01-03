@@ -24,11 +24,18 @@
                     <div class="ps-3">
                         <h3 class="mb-1">{{$testimonial->testimonialName}}</h3>
                         <span>{{$testimonial->subject}}</span>
+                        
                     </div>
+
                     <i class="fa fa-quote-right fa-3x text-primary ms-auto d-none d-sm-flex"></i>
+                    
                 </div>
+                <button type="submit" class="btn btn-default">edit</button>
+                <button type="submit" class="btn btn-default">delete</button>
+
             </div>
             @endforeach
+
                     {{-- <i class="fa fa-quote-right fa-3x text-primary ms-auto d-none d-sm-flex"></i>
                 </div>
             </div> --}}
