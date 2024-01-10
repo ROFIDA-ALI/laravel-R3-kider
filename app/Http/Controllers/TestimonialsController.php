@@ -48,6 +48,8 @@ class TestimonialsController extends Controller
          Testimonial::create($data);
          return redirect('admin/testimonial');
      }
+
+    
     /**
      * Display the specified resource.
      */
@@ -56,12 +58,12 @@ class TestimonialsController extends Controller
     // {
     //    Mail::to('rofidaali44@gmail.com')->send(new TestimonialMail($request));
     //    return "Your message is sent Successfully";
-    // }
     public function show(string $id)
     {
-        
-        
-    }
+        $testimonials = Testimonial::findOrFail($id);
+        return view ('testimonialDetail',compact('testimonials'));
+}
+
     public function DashboradView()
     {
         
@@ -80,10 +82,46 @@ class TestimonialsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    // public function update(Request $request, string $id)
+    // {
+    //     $data = $request->validate([
+    //         'testimonialName'=>'required|string',
+    //         'image'=>'sometimes|mimes:png,jpg,jpeg|max:2048',
+    //         'review'=>'required|string',
+    //         'subject'=>'required|string',
+    //     ]);
+    //     if ($request ->hasFile('image')){
+
+    //        $fileName = $this->uploadFile( $request->image, 'assets/img');
+    //        $data['image']=$fileName;}
+    //        Testimonial::where('id', $id)->update($data);
+    //     // return redirect('dashboard/testimonialAdmin');
+    //     return "done";
+    // }
+    public function update(Request $request, string $id) : RedirectResponse
     {
-        //
-    }
+
+   
+    $messages=$this ->messages();
+
+    // $category = Category::findOrFail($request->category_id);
+
+$data =$request->validate ([
+'testimonialName'=>'required |string',
+ 'review' => 'required |string',
+ 'image' => 'sometimes|mimes:png,jpg,jpeg|max:2048',
+ 'subject'=>'required|string',
+
+], $messages);
+if ($request ->hasFile('image')){
+$fileName = $this->uploadFile( $request->image, 'assets/img');
+$data['image']=$fileName;}
+
+     
+Testimonial::where('id', $id)->update($data);
+
+        return 'done';
+}
 
     /**
      * Remove the specified resource from storage.
@@ -92,4 +130,15 @@ class TestimonialsController extends Controller
     {
         //
     }
+   
+    public function messages(){
+        return [ 'testimonialName.required' => __('messages.Title is required'), 
+        'review.required' =>  __('messages.should be text') ,
+        'image.required' => __('messages.should be png,jpg,jpeg'),
+        
+    ];
+    }
+
+
+
 }

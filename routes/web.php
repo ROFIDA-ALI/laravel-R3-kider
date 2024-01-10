@@ -55,3 +55,6 @@ Route::get('/testimonial', [TestimonialsController::class, 'index'])
 
 Route::get('testimonialAdmin', [TestimonialsController::class, 'DashboradView']);
 Route::get('editTestimonial/{id}', [TestimonialsController::class, 'edit']);
+
+Route::get('testimonialDetail/{id}', [TestimonialsController::class, 'show'])->name('testimonialDetail');
+Route::put('updateTestimonial/{id}', [TestimonialsController::class, 'update'])->name('updateTestimonial');

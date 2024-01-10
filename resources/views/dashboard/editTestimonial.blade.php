@@ -186,27 +186,30 @@
                 <div class="row vh-100 bg-secondary rounded align-items-center justify-content-center mx-0">
                     <div class="col-sm-12 col-xl-6">
                         <div class="bg-secondary rounded h-100 p-4">
-                            <h6 class="mb-4">Edit Testimonila</h6>
+                            
+                                <form action="{{route('updateTestimonial',$testimonial->id) }}" method="post" enctype="multipart/form-data">
+                                    @csrf
+                                    @method('put')
+                                <h6 class="mb-4">Edit Testimonila</h6>
                             <div class="form-floating mb-3">
                                
-      <input type="text" class="form-control" id="testimonialName" placeholder=" testimonial Name" name="testimonialName" value="">
+      <input type="text" class="form-control" id="testimonialName" placeholder=" testimonial Name" name="testimonialName" value="{{ $testimonial->testimonialName}}">
       <label for="title">Name:</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="profession" class="form-control" id="floatingPassword"
+                                <input type="profession" class="form-control" value="{{$testimonial->subject}}" id="floatingPassword"
                                     placeholder="profession">
                                 <label for="floatingPassword">profession</label>
                             </div>
                            
                             <div class="form-group">
                                 <label for="image">Image:</label>
-                                <input type="file" class="form-control" id="image" name="image" value="">
-                              
-                                    
+                                <input type="file" class="form-control" id="image" name="image" value="{{ old('image') }}">
+                                <img src="{{ asset('assets/img/'.$testimonial->image) }}" alt="testimonials" style="width:150px;">
                             </div>  
                             <div class="form-floating">
                                 <textarea class="form-control" placeholder="Leave a Review here"
-                                    id="floatingTextarea" style="height: 150px;"></textarea>
+                                    id="floatingTextarea" style="height: 150px;">{{$testimonial->review}}</textarea>
                                 <label for="floatingTextarea">Review</label>
                             </div>
                             <button type="submit" class="btn btn-primary">Update</button>                        </div>
