@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\TestimonialsController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController ;
 /*
@@ -53,8 +54,21 @@ Route::get('/testimonial', [TestimonialsController::class, 'index'])
 
 
 
-Route::get('testimonialAdmin', [TestimonialsController::class, 'DashboradView']);
+Route::get('testimonialAdmin', [TestimonialsController::class, 'DashboradView'])->name('testimonialAdmin');
 Route::get('editTestimonial/{id}', [TestimonialsController::class, 'edit']);
 
 Route::get('testimonialDetail/{id}', [TestimonialsController::class, 'show'])->name('testimonialDetail');
 Route::put('updateTestimonial/{id}', [TestimonialsController::class, 'update'])->name('updateTestimonial');
+Route::get('deleteTestimonial/{id}', [TestimonialsController::class, 'destroy']); //soft
+Route::get('trashed', [TestimonialsController::class, 'trashed'])->name('trashed');
+ Route::get('restoreTestimonial/{id}', [TestimonialsController::class, 'restore']);
+ Route::get('delete/{id}', [TestimonialsController::class, 'delete']); //forsedelete
+
+ Route::get('useradmin', [UserController::class, 'index'])->name('useradmin');
+ Route::get('userDetails/{id}', [UserController::class, 'show'])->name('userDetails');
+ Route::get('editUser/{id}', [UserController::class, 'edit']);
+ Route::put('updateUser/{id}', [UserController::class, 'update'])->name('updateUser');
+ Route::get('deleteUser/{id}', [UserController::class, 'destroy']); //soft
+ Route::get('trashedUsers', [UserController::class, 'trashed'])->name('trashedUsers');
+  Route::get('restoreUser/{id}', [UserController::class, 'restore']);
+  Route::get('delete/{id}', [UserController::class, 'delete']); //forsedelete

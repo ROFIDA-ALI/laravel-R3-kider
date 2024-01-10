@@ -79,6 +79,7 @@
                             <a href="signin.html" class="dropdown-item">Sign In</a>
                             <a href="signup.html" class="dropdown-item">Sign Up</a>
                             <a href="{{route('useradmin') }}" class="dropdown-item">Users</a>
+
                             <a href="{{route('testimonialAdmin') }}" class="dropdown-item">Testimonial</a>
                             <a href="{{route('trashed') }}" class="dropdown-item">Trashed Testimonial</a>
                             <a href="blank.html" class="dropdown-item active">Blank Page</a>
@@ -188,16 +189,16 @@
                 <div class="row vh-100 bg-secondary rounded align-items-center justify-content-center mx-0">
                     <div class="col-12">
                         <div class="bg-secondary rounded h-100 p-4">
-                            <h6 class="mb-4">Testimonial table</h6>
+                            <h6 class="mb-4">Users table</h6>
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
                                         <tr>
                                             <th scope="col">#</th>
-                                            <th scope="col">Testimonial Name</th>
-                                            <th scope="col">profession</th>
-                                            <th scope="col">Review</th>
-                                            <th scope="col">Date</th>
+                                            <th scope="col">name</th>
+                                            <th scope="col">email</th>
+                                          
+                                            <th scope="col">mobile</th>
                                             <th scope="col">Edit</th>
                                            
                                             <th scope="col">Delete</th>
@@ -207,16 +208,16 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($testimonials as $testimonial)
+                                        @foreach ($users as $user)
                                         <tr>
-                                            <th scope="row">{{$testimonial->id}}</th>
-                                            <td>{{$testimonial->testimonialName}}</td>
-                                            <td>{{$testimonial->subject}}</td>
-                                            <td>{{$testimonial->review}}</td>
-                                            <td>{{$testimonial->created_at}}</td>
-                                            <td><a href="editTestimonial/{{$testimonial->id}}">Edit</a></td>
-                                            <td><a href="deleteTestimonial/{{$testimonial->id}}">Delete</a></td>
-                                            <td><a href="TestimonialDetails/{{$testimonial->id }}">Show</a></td>
+                                            <th scope="row">{{$user->id}}</th>
+                                            <td>{{$user->name}}</td>
+                                            <td>{{$user->email}}</td>
+                                            
+                                            <td>{{$user->mobile}}</td>
+                                            <td><a href="editUser/{{$user->id}}">Edit</a></td>
+                                            <td><a href="deleteUser/{{$user->id}}">Delete</a></td>
+                                            <td><a href="UserDetails/{{$user->id }}">Show</a></td>
                                             
 
                                         </tr>                                      

@@ -78,9 +78,7 @@
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="signin.html" class="dropdown-item">Sign In</a>
                             <a href="signup.html" class="dropdown-item">Sign Up</a>
-                            <a href="{{route('useradmin') }}" class="dropdown-item">Users</a>
-                            <a href="{{route('testimonialAdmin') }}" class="dropdown-item">Testimonial</a>
-                            <a href="{{route('trashed') }}" class="dropdown-item">Trashed Testimonial</a>
+                            <a href="404.html" class="dropdown-item">404 Error</a>
                             <a href="blank.html" class="dropdown-item active">Blank Page</a>
                         </div>
                     </div>
@@ -186,46 +184,31 @@
             <!-- Blank Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="row vh-100 bg-secondary rounded align-items-center justify-content-center mx-0">
-                    <div class="col-12">
+                    <div class="col-sm-12 col-xl-6">
                         <div class="bg-secondary rounded h-100 p-4">
-                            <h6 class="mb-4">Testimonial table</h6>
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Testimonial Name</th>
-                                            <th scope="col">profession</th>
-                                            <th scope="col">Review</th>
-                                            <th scope="col">Date</th>
-                                            <th scope="col">Edit</th>
-                                           
-                                            <th scope="col">Delete</th>
-                                            <th scope="col">Show</th>
-                                           
-
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($testimonials as $testimonial)
-                                        <tr>
-                                            <th scope="row">{{$testimonial->id}}</th>
-                                            <td>{{$testimonial->testimonialName}}</td>
-                                            <td>{{$testimonial->subject}}</td>
-                                            <td>{{$testimonial->review}}</td>
-                                            <td>{{$testimonial->created_at}}</td>
-                                            <td><a href="editTestimonial/{{$testimonial->id}}">Edit</a></td>
-                                            <td><a href="deleteTestimonial/{{$testimonial->id}}">Delete</a></td>
-                                            <td><a href="TestimonialDetails/{{$testimonial->id }}">Show</a></td>
-                                            
-
-                                        </tr>                                      
-                                            @endforeach
-                                    </tbody>
-
-                                </table>
+                            
+                                <form action="{{route('updateUser',$user->id) }}" method="post" enctype="multipart/form-data">
+                                    @csrf
+                                    @method('put')
+                                <h6 class="mb-4">Edit User</h6>
+                            <div class="form-floating mb-3">
+                               
+      <input type="text" class="form-control" id="testimonialName" placeholder=" testimonial Name" name="name" value="{{ $user->name}}">
+      <label for="title">Name:</label>
                             </div>
-                        </div>
+                            <div class="form-floating mb-3">
+                                <input type="profession" class="form-control" value="{{$user->email}}" id="floatingPassword"
+                                    placeholder="profession" name="email">
+                                <label for="floatingPassword">Email</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="profession" class="form-control" value="{{$user->mobile}}" id="floatingPassword"
+                                    placeholder="profession" name="mobile">
+                                <label for="floatingPassword">mobile</label>
+                            </div>
+                            
+                           
+                            <button type="submit" class="btn btn-primary">Update</button>                        </div>
                     </div>
                 </div>
             </div>

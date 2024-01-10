@@ -190,7 +190,7 @@
                                 <form action="{{route('updateTestimonial',$testimonial->id) }}" method="post" enctype="multipart/form-data">
                                     @csrf
                                     @method('put')
-                                <h6 class="mb-4">Edit Testimonila</h6>
+                                <h6 class="mb-4">Edit Testimonial</h6>
                             <div class="form-floating mb-3">
                                
       <input type="text" class="form-control" id="testimonialName" placeholder=" testimonial Name" name="testimonialName" value="{{ $testimonial->testimonialName}}">
@@ -198,7 +198,7 @@
                             </div>
                             <div class="form-floating mb-3">
                                 <input type="profession" class="form-control" value="{{$testimonial->subject}}" id="floatingPassword"
-                                    placeholder="profession">
+                                    placeholder="profession" name="subject">
                                 <label for="floatingPassword">profession</label>
                             </div>
                            
@@ -209,7 +209,7 @@
                             </div>  
                             <div class="form-floating">
                                 <textarea class="form-control" placeholder="Leave a Review here"
-                                    id="floatingTextarea" style="height: 150px;">{{$testimonial->review}}</textarea>
+                                    id="floatingTextarea" style="height: 150px;" name="review">{{$testimonial->review}}</textarea>
                                 <label for="floatingTextarea">Review</label>
                             </div>
                             <button type="submit" class="btn btn-primary">Update</button>                        </div>

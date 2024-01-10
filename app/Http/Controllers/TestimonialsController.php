@@ -101,36 +101,59 @@ class TestimonialsController extends Controller
     public function update(Request $request, string $id) : RedirectResponse
     {
 
+        // return dd($request);
+        
    
-    $messages=$this ->messages();
+    $messages=$this->messages();
 
     // $category = Category::findOrFail($request->category_id);
 
-$data =$request->validate ([
-'testimonialName'=>'required |string',
- 'review' => 'required |string',
- 'image' => 'sometimes|mimes:png,jpg,jpeg|max:2048',
- 'subject'=>'required|string',
+    $data =$request->validate ([
+    'testimonialName'=>'required|string',
+    'review' => 'required|string',
+    'image' => 'sometimes|mimes:png,jpg,jpeg|max:2048',
+    'subject'=>'required|string',
 
-], $messages);
-if ($request ->hasFile('image')){
-$fileName = $this->uploadFile( $request->image, 'assets/img');
-$data['image']=$fileName;}
+    ], $messages);
+    if ($request ->hasFile('image')){
+    $fileName = $this->uploadFile( $request->image, 'assets/img');
+    $data['image']=$fileName;}
 
-     
-Testimonial::where('id', $id)->update($data);
+        
+    Testimonial::where('id', $id)->update($data);
 
-        return 'done';
-}
+    return redirect('testimonialAdmin');
+    }
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        //
+        Testimonial :: where('id', $id)->delete();
+
+        return redirect ('testimonialAdmin');
     }
-   
+
+    public function delete(string $id): RedirectResponse
+    {
+        
+        Testimonial :: where('id', $id)->forceDelete();
+
+     return redirect ('trashed');   
+     }
+
+    public function trashed()
+    {
+        $testimonials = Testimonial::onlyTrashed()->get();
+    return view('dashboard/trashed',compact('testimonials'));
+    }
+
+    public function restore(string $id): RedirectResponse
+    {
+        Testimonial :: where('id', $id)->restore();
+        return redirect ('testimonialAdmin');
+    }
     public function messages(){
         return [ 'testimonialName.required' => __('messages.Title is required'), 
         'review.required' =>  __('messages.should be text') ,
