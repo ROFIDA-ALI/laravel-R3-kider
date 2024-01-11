@@ -79,6 +79,7 @@
                             <a href="signin.html" class="dropdown-item">Sign In</a>
                             <a href="signup.html" class="dropdown-item">Sign Up</a>
                             <a href="{{route('useradmin') }}" class="dropdown-item">Users</a>
+                            <a href="{{route('trashedUsers') }}" class="dropdown-item"> Trashed Users</a>
 
                             <a href="{{route('testimonialAdmin') }}" class="dropdown-item">Testimonial</a>
                             <a href="{{route('trashed') }}" class="dropdown-item">Trashed Testimonial</a>

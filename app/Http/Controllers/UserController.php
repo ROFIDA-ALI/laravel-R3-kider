@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-
+use Illuminate\Http\RedirectResponse;
 class UserController extends Controller
 {
     /**
@@ -46,8 +46,8 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        $users = User::findOrFail($id);
-        return view('dashboard/editUser', compact ('users'));     
+        $user = User::findOrFail($id);
+        return view('dashboard/editUser', compact ('user'));     
     }
 
     /**
@@ -70,7 +70,7 @@ class UserController extends Controller
     'email' => 'required|string',
     'mobile'=>'required|string',
     ], $messages);
-    $request['password'] = Hash::make($request['password']);
+    // $request['password'] = Hash::make($request['password']);
 
    
         
@@ -104,7 +104,7 @@ class UserController extends Controller
     return view('dashboard/trashedUsers',compact('users'));
     }
 
-    public function restore(string $id): RedirectResponse
+    public function restoreUser (string $id): RedirectResponse
     {
         User :: where('id', $id)->restore();
         return redirect ('useradmin');

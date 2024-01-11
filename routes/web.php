@@ -66,9 +66,9 @@ Route::get('trashed', [TestimonialsController::class, 'trashed'])->name('trashed
 
  Route::get('useradmin', [UserController::class, 'index'])->name('useradmin');
  Route::get('userDetails/{id}', [UserController::class, 'show'])->name('userDetails');
- Route::get('editUser/{id}', [UserController::class, 'edit']);
+ Route::get('editUser/{id}', [UserController::class, 'edit'])->name('editUser');
  Route::put('updateUser/{id}', [UserController::class, 'update'])->name('updateUser');
  Route::get('deleteUser/{id}', [UserController::class, 'destroy']); //soft
  Route::get('trashedUsers', [UserController::class, 'trashed'])->name('trashedUsers');
-  Route::get('restoreUser/{id}', [UserController::class, 'restore']);
+  Route::get('restoreUser/{id}', [UserController::class, 'restoreUser']);
   Route::get('delete/{id}', [UserController::class, 'delete']); //forsedelete

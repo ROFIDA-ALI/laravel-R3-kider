@@ -78,8 +78,9 @@
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="signin.html" class="dropdown-item">Sign In</a>
                             <a href="signup.html" class="dropdown-item">Sign Up</a>
-                            <a href="404.html" class="dropdown-item">404 Error</a>
-                            <a href="blank.html" class="dropdown-item active">Blank Page</a>
+                            <a href="{{route('useradmin') }}" class="dropdown-item">Users</a>
+                            <a href="{{route('testimonialAdmin') }}" class="dropdown-item">Testimonial</a>
+                            <a href="{{route('trashed') }}" class="dropdown-item">Trashed Testimonial</a>                            <a href="blank.html" class="dropdown-item active">Blank Page</a>
                         </div>
                     </div>
                 </div>
@@ -204,7 +205,7 @@
                             <div class="form-floating mb-3">
                                 <input type="profession" class="form-control" value="{{$user->mobile}}" id="floatingPassword"
                                     placeholder="profession" name="mobile">
-                                <label for="floatingPassword">mobile</label>
+                                <label for="floatingPassword">Mobile</label>
                             </div>
                             
                            
