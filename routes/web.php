@@ -37,7 +37,9 @@ Route::get('teachers', function () {
 
 Auth::routes(['verify'=>true]);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/register', [HomeController::class, 'register'])->name('register');
+Route::get('/indexAdmin', [HomeController::class, 'indexAdmin'])->name('indexAdmin');
 
 
 Route::group(['prefix'=>'admin'],function(){

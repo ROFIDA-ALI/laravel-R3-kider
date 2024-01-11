@@ -74,14 +74,17 @@
                             @enderror
                         </div>
                     </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
+                    <div class="col-md-6 offset-md-4">
+                    <a href="{{route('useradmin')}}" class="btn btn-primary rounded-pill px-3 d-none d-lg-block">Register<i class="fa fa-arrow-right ms-3"></i></a>
+                </div>
+                        {{-- <div class="row mb-0">
+                            
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
+                                    <a href="{{route('indexAdmin')}}"></a>
+                                    {{ __('Register') }} --}}
+                                {{-- </button>
+                            
+                        </div> --}}
                     </form>
                 </div>
             </div>
